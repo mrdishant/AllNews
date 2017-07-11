@@ -20,11 +20,11 @@ public class Channel extends AppCompatActivity  {
 
     void l2view() {
         l2 = (ListView) findViewById(R.id.l2);
-        int s = getIntent().getIntExtra("name", 0);
+        String s = getIntent().getStringExtra("name");
         a = new ArrayList<>();
         Paper p1, p2, p3, p4, p5;
         switch (s) {
-            case 1:
+            case "India":
                 p1 = new Paper(R.drawable.a1, "AajTak", "http://aajtak.intoday.in/");
                 p2 = new Paper(R.drawable.abp, "ABP News", "http://abpnews.abplive.in/");
                 p3 = new Paper(R.drawable.a3, "BBC News", "http://www.bbc.com/");
@@ -38,7 +38,7 @@ public class Channel extends AppCompatActivity  {
                 break;
 
 
-            case 2:
+            case "America":
                 p1 = new Paper(R.drawable.b1, "Fox News", "http://www.foxnews.com/");
                 p2 = new Paper(R.drawable.b2, "NBC News", "http://www.nbcnews.com/");
                 p3 = new Paper(R.drawable.b3, "CBS News", "http://www.cbsnews.com/");
@@ -47,13 +47,13 @@ public class Channel extends AppCompatActivity  {
                 a.add(p3);
                 break;
 
-            case 3:
+            case "Australia":
                 p1 = new Paper(R.drawable.c1, "CTV News", "http://www.ctvnews.ca/");
                 a.add(p1);
                 break;
 
 
-            case 4:
+            case "Canada":
                 p1 = new Paper(R.drawable.d1, "Sky News", "http://news.sky.com/");
                 p2 = new Paper(R.drawable.d2, "ABC News", "http://abcnews.go.com/");
                 p3 = new Paper(R.drawable.d3, "7 News", "https://au.news.yahoo.com/");
@@ -63,7 +63,7 @@ public class Channel extends AppCompatActivity  {
                 break;
 
 
-            case 5:
+            case "Hungary":
                 p1 = new Paper(R.drawable.e1, "HirTv", "http://hirtv.hu/");
                 p2 = new Paper(R.drawable.e2, "Channel 4", "http://www.channel4.com/");
                 a.add(p1);
@@ -77,7 +77,9 @@ public class Channel extends AppCompatActivity  {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(Channel.this, NewsView.class);
                 String u = a.get(position).getUrl();
+                String n=a.get(position).getName();
                 i.putExtra("URL", u);
+                i.putExtra("Name",n);
                 startActivity(i);
             }
         });
@@ -85,6 +87,8 @@ public class Channel extends AppCompatActivity  {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String na=getIntent().getStringExtra("name");
+        getSupportActionBar().setTitle(na);
         setContentView(R.layout.activity_channel);
         l2view();
     }

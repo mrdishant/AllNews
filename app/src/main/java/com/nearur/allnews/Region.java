@@ -46,19 +46,19 @@ public class Region extends AppCompatActivity implements AdapterView.OnItemClick
         Intent i=new Intent(this,Channel.class);
         switch(position){
             case  0:
-                i.putExtra("name",1);
+                i.putExtra("name","India");
                 break;
             case  1:
-                i.putExtra("name",2);
+                i.putExtra("name","America");
                 break;
             case  2:
-                i.putExtra("name",3);
+                i.putExtra("name","Australia");
                 break;
             case  3:
-                i.putExtra("name",4);
+                i.putExtra("name","Canada");
                 break;
             case  4:
-                i.putExtra("name",5);
+                i.putExtra("name","Hungary");
                 break;
         }
         startActivity(i);
